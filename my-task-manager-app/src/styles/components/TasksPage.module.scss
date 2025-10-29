@@ -1,0 +1,12 @@
+@use '../index.scss' as *;
+
+.TasksPage {
+  width: min(90vw, 1200px);
+  margin: 0 auto;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

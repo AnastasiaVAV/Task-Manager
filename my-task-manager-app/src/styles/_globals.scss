@@ -1,0 +1,112 @@
+@use './variables' as vars;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: vars.$color-dark;
+}
+
+a {
+  color: inherit;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button {
+  
+  border-radius: vars.$border-radius-m;
+  padding-block: 12px;
+  padding-inline: 15px;
+  min-height: 30px;
+
+  &:disabled {
+    background-color: vars.$color-light-gray;
+    color: vars.$color-dark-gray;
+    cursor: not-allowed;
+  }
+}
+
+.button-primary {
+  width: 100%;
+  background-color: vars.$color-green;
+  color: vars.$color-light;
+  
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    background-color: vars.$color-dark-green;
+    box-shadow: vars.$box-shadow-light;
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: vars.$box-shadow-dark;
+  }
+}
+
+.button-secondary {
+  width: 100%;
+  background-color: vars.$color-light-blue;
+  color: vars.$color-light;
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    background-color: vars.$color-dark-blue;
+    box-shadow: vars.$box-shadow-light;
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: vars.$box-shadow-dark;
+  }
+}
+
+.main-content {
+  flex: 1 0 auto;
+  overflow-y: auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}

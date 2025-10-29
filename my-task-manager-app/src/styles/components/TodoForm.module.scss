@@ -1,0 +1,107 @@
+@use '../index.scss' as *;
+
+.todoForm {
+  background: $color-light;
+  padding-inline: 25px;
+  padding-top: 35px;
+  padding-bottom: 16px;
+  border-radius: $border-radius-l;
+  box-shadow: $box-shadow-light;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 30px;
+  align-items: start;
+
+  @media (max-width: 960px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 70px;
+}
+
+.input {
+  height: 50px;
+  padding: 0 15px;
+  border: 2px solid $color-light-gray;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: $color-light;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $color-light-blue;
+    box-shadow: 0 0 0 3px rgba($color-light-blue, 0.1);
+    background-color: $color-light;
+  }
+
+  &::placeholder {
+    color: $color-dark-gray-alternative;
+  }
+
+  &:hover {
+    border-color: $color-dark-gray;
+  }
+}
+
+.inputError {
+  border-color: $color-dark-red;
+  background-color: rgba($color-dark-red, 0.05);
+  
+  &:focus {
+    border-color: $color-dark-red;
+    box-shadow: 0 0 0 3px rgba($color-dark-red, 0.1);
+  }
+}
+
+.error {
+  color: $color-dark-red;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+  padding-left: 5px;
+}
+
+.priority {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: $color-dark-gray-alternative;
+  transition: all $transition-duration ease;
+}
+
+.priorityLabel {
+  font-weight: 500;
+}
+
+.priorityOption {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+@media (max-width: 480px) {
+  .todoForm {
+    padding: 20px;
+  }
+  
+  .form {
+    gap: 15px;
+  }
+}

@@ -1,0 +1,101 @@
+@use '../index.scss' as *;
+
+.priorityRadio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all $transition-duration ease;
+
+  &Input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &Circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid $color-light-gray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-duration ease;
+    position: relative;
+    background: $color-light;
+
+    &Selected {
+      border-color: var(--priority-color);
+      background: rgba(var(--priority-color), 0.1);
+    }
+  }
+
+  &Dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--priority-color);
+    transition: all $transition-duration ease;
+  }
+
+  // Модификаторы размеров
+  &Small {
+    .priorityRadioCircle {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .priorityRadioDot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  &Large {
+    .priorityRadioCircle {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .priorityRadioDot {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.priorityRadioGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &Vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &Horizontal {
+    flex-direction: row;
+  }
+}
+
+// Адаптивность
+@media (max-width: 480px) {
+  .priorityRadio {
+    &Circle {
+      width: 18px;
+      height: 18px;
+    }
+
+    &Dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  
+  .priorityRadioGroup {
+    gap: 6px;
+  }
+}

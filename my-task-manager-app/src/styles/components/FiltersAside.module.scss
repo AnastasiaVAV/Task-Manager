@@ -1,0 +1,79 @@
+@use '../index.scss' as *;
+
+.filtersAside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px;
+  padding-bottom: 20px;
+  background: $color-light;
+  border-radius: $border-radius-m;
+  height: fit-content;
+  position: sticky;
+  top: 1rem;
+  font-size: 14px;
+}
+
+.filtersButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filterButton {
+  padding-block: 12px;
+  padding-inline: 15px;
+  border-radius: $border-radius-m;
+  font-weight: 500;
+  transition: all $transition-duration ease;
+  text-align: center;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.buttonActive {
+  background: $color-light-blue;
+  color: $color-light;
+
+  &:hover {
+    background: $color-dark-blue;
+  }
+}
+
+.buttonInactive {
+  background: $color-light-gray;
+  color: $color-dark;
+
+  &:hover {
+    background: $color-dark-gray;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.tasksCounter {
+  color: $color-dark-gray-alternative;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .filtersAside {
+    position: static;
+    order: -1;
+  }
+  
+  .filtersButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .filterButton {
+    flex: 1;
+    min-width: 100px;
+  }
+}

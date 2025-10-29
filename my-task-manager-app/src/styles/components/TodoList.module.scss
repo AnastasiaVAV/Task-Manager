@@ -1,0 +1,15 @@
+@use '../index.scss' as *;
+
+.todoContainer {
+  display: grid;
+  grid-template-columns: 1fr min(23vw, 300px);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .todoContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

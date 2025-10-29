@@ -1,0 +1,137 @@
+@use '../index.scss' as *;
+
+.todoItem {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-inline: 15px;
+  padding-block: 10px;
+  background: $color-light;
+  border: 1px solid $color-light-gray;
+  border-radius: $border-radius-m ;
+  margin-bottom: 10px;
+  transition: all $transition-duration ease;
+
+  &:hover {
+    box-shadow: $box-shadow-light;
+  }
+}
+
+.priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priorityOptions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.view {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.checkbox {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: $border-radius-xs;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:checked {
+    background: $color-green;
+  }
+}
+
+.label {
+  font-size: 1rem;
+  color: $color-dark;
+  cursor: pointer;
+  margin: 0;
+
+  &Completed {
+    text-decoration: line-through;
+    color: $color-dark-gray-alternative;
+  }
+}
+
+.todoItemButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.todoItemButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.15s ease, color 0.2s ease;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: $color-dark-gray;
+    transition: stroke $transition-duration ease, 
+                transform $transition-duration ease;
+  }
+
+  &:hover svg {
+    stroke: $color-dark;
+    transform: scale(1.05);
+  }
+
+  &:active svg {
+    transform: scale(0.95);
+  }
+}
+
+.editForm {
+  height: 100%;
+  width: 100%;
+}
+
+.editInput {
+  height: 35px;
+  width: 100%;
+  padding: 0 15px;
+  border: 2px solid $color-light-gray;
+  border-radius: $border-radius-m;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkbox {
+    width: 15px;
+  }
+
+  .priorityOptions {
+    gap: 6px;
+  }
+
+  .todoItem {
+    padding-inline: 10px;
+    gap: 10px
+  }
+
+  .todoItemButtons {
+    display: flex;
+    gap: 5px;
+  }
+}

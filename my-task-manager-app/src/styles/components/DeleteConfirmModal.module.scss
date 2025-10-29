@@ -1,0 +1,44 @@
+@use '../index.scss' as *;
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba($color-dark, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: $color-light;
+  padding: 24px;
+  border-radius: $border-radius-m;
+  text-align: center;
+  width: 320px;
+  box-shadow: $box-shadow-dark;
+}
+
+.modalTitle {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: $color-dark;
+}
+
+.modalText {
+  margin-bottom: 16px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: center;
+}
+
+.closeButton {
+  font-weight: 600;
+  color: $color-light-blue;
+
+  &:hover {
+    color: $color-dark-blue;
+  }
+}
