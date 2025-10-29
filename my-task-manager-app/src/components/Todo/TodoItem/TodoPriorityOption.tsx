@@ -6,7 +6,6 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'on
   id?: string
   value: Priority
   label: string
-  color: string
   checked?: boolean
   onChange?: ((value: Priority) => void) | ((e: ChangeEvent<HTMLInputElement>) => void)
 }
@@ -15,7 +14,6 @@ const TodoPriorityOption = ({
   id,
   value,
   label,
-  color,
   checked,
   onChange,
   ...rest
@@ -31,23 +29,26 @@ const TodoPriorityOption = ({
   }
 
   return (
-    <label className={styles.priorityRadio} title={label}>
+    <label 
+      className={styles.priorityRadio} 
+      title={label}
+      data-priority={value}
+    >
       <input
         type="radio"
         id={id ? `${id}-${value}` : undefined}
         value={value}
         checked={checked}
         onChange={handleChange}
-        className={styles.priorityRadioInput}
+        className={styles.input}
         {...rest}
       />
       <span
-        className={`${styles.priorityRadioCircle} ${
-          checked ? styles.priorityRadioCircleSelected : ''
+        className={`${styles.circle} ${
+          checked ? styles.circleSelected : ''
         }`}
-        style={{ '--priority-color': color } as React.CSSProperties}
       >
-        {checked && <span className={styles.priorityRadioDot} />}
+        {checked && <span className={styles.dot} />}
       </span>
     </label>
   )

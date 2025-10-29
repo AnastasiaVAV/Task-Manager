@@ -1,34 +1,29 @@
 import { useState } from 'react'
 import { Pencil, Trash2, Save, X } from 'lucide-react'
 
+import type Task from '../../interfaces/Task'
+import priorityOptions from '../../interfaces/PriorityOptions'
+
+import TodoButtons from './TodoItem/TodoButtons'
+import TodoTextEditor from './TodoItem/TodoTextEditor'
+import TodoPriorityOption from './TodoItem/TodoPriorityOption'
+import DeleteConfirmModal from './TodoItem/DeleteConfirmModal'
+
 import { 
   useEditTextTaskMutation, 
   useToggleCompletedTaskMutation, 
   useEditPriorityTaskMutation,
   useRemoveTaskMutation,
 } from '../../api/supabaseApi'
-
-import type Task from '../../interfaces/Task'
-import TodoButtons from './TodoItem/TodoButtons'
-import TodoTextEditor from './TodoItem/TodoTextEditor'
-import TodoPriorityOption from './TodoItem/TodoPriorityOption'
-import DeleteConfirmModal from './TodoItem/DeleteConfirmModal'
-
 import styles from '../../styles/components/TodoItem.module.scss'
 
 interface Props {
   task: Task
 }
 
-const priorityOptions = [
-  { value: 'low' as Task['priority'], label: 'Низкий', color: '#5ac79a' },
-  { value: 'medium' as Task['priority'], label: 'Средний', color: '#4753bb' },
-  { value: 'high' as Task['priority'], label: 'Высокий', color: '#eb766d' },
-]
-
-
 const TodoItem = ({ task }: Props) => {
   const { id, text, completed, priority } = task
+
   const [isEditing, setIsEditing] = useState(false)
   const [editedTask, setEditedTask] = useState(text)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
@@ -120,7 +115,6 @@ const TodoItem = ({ task }: Props) => {
               id={id}
               value={option.value}
               label={option.label}
-              color={option.color}
               checked={priority === option.value}
               onChange={handleChangePriority}
             />
@@ -129,7 +123,7 @@ const TodoItem = ({ task }: Props) => {
       </div>
       <TodoButtons buttons={buttons} />
       {isDeleteModalOpen && (
-        <DeleteConfirmModal onCancel={cancelDelete} onConfirm={confirmDelete} seconds={30} />
+        <DeleteConfirmModal onCancel={cancelDelete} onConfirm={confirmDelete} seconds={10} />
       )}
     </li>
   )

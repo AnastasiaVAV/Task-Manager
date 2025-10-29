@@ -5,18 +5,13 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import type { SignupFormData } from '../interfaces/AuthFormData'
+
 import FormInput from './Todo/Auth/FormInput'
 
 import useAuth from '../hooks/useAuth'
 import { useAddUserMutation } from '../api/supabaseApi'
 import styles from '../styles/components/Auth.module.scss'
-
-interface SignupFormData {
-  login: string
-  password: string
-  confirmPassword: string
-  username: string
-}
 
 const schema = yup.object({
   login: yup.string().required('Обязательное поле'),

@@ -76,6 +76,12 @@
   padding-left: 5px;
 }
 
+.priorityRadioGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .priority {
   display: flex;
   flex-direction: column;
@@ -103,5 +109,9 @@
   
   .form {
     gap: 15px;
+  }
+
+  .priorityRadioGroup {
+    gap: 6px;
   }
 }

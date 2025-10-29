@@ -5,14 +5,13 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import type Priority from '../../types/Priority'
+import priorityOptions from '../../interfaces/PriorityOptions'
 
 import TodoPriorityOption from './TodoItem/TodoPriorityOption'
 
-import { useAddTaskMutation } from '../../api/supabaseApi'
-
-import styles from '../../styles/components/TodoForm.module.scss'
-import radioStyles from '../../styles/components/PriorityRadio.module.scss'
 import useAuth from '../../hooks/useAuth'
+import { useAddTaskMutation } from '../../api/supabaseApi'
+import styles from '../../styles/components/TodoForm.module.scss'
 
 interface TodoFormData {
   text: string
@@ -23,12 +22,6 @@ const schema = yup.object({
   text: yup.string().trim().required('Задача обязательна для заполнения').min(1, 'Задача не может быть пустой'),
   priority: yup.string().oneOf(['low', 'medium', 'high']).required('Выберите приоритет'),
 })
-
-const priorityOptions = [
-  { value: 'low' as Priority, label: 'Низкий', color: '#5ac79a' },
-  { value: 'medium' as Priority, label: 'Средний', color: '#4753bb' },
-  { value: 'high' as Priority, label: 'Высокий', color: '#eb766d' },
-]
 
 const TodoForm = () => {
   const { getUserId } = useAuth()
@@ -100,7 +93,7 @@ const TodoForm = () => {
     
         <div className={styles.priority}>
           <span className={styles.priorityLabel}>Приоритет</span>
-          <div className={`${radioStyles.priorityRadioGroup} ${radioStyles.priorityRadioGroupHorizontal}`}>
+          <div className={styles.priorityRadioGroup}>
             {priorityOptions.map((option) => (
               <div className={styles.priorityOption} key={option.value}>
                 <TodoPriorityOption
@@ -108,7 +101,6 @@ const TodoForm = () => {
                   {...register('priority')}
                   value={option.value}
                   label={option.label}
-                  color={option.color}
                   checked={selectedPriority === option.value}
                 />
                 <span className={styles.priorityText}>

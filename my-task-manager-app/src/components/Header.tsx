@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import styles from '../styles/components/Header.module.scss'
 import useAuth from '../hooks/useAuth'
+import styles from '../styles/components/Header.module.scss'
 
 const Header = () => {
   const { isLogin, logOut } = useAuth()

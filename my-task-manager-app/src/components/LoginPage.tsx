@@ -1,22 +1,17 @@
 import { useState } from 'react'
-// import { useDispatch } from 'react-redux'
 import { useNavigate, NavLink } from 'react-router-dom'
 
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+import type { LoginFormData } from '../interfaces/AuthFormData'
+
 import FormInput from './Todo/Auth/FormInput'
 
-import { useLazyGetUserQuery } from '../api/supabaseApi'
-// import { actions as authActions } from '../slices/authSlice'
-import styles from '../styles/components/Auth.module.scss'
 import useAuth from '../hooks/useAuth'
-
-interface LoginFormData {
-  login: string
-  password: string
-}
+import { useLazyGetUserQuery } from '../api/supabaseApi'
+import styles from '../styles/components/Auth.module.scss'
 
 const schema = yup.object({
   login: yup.string().required('Обязательное поле'),
@@ -26,7 +21,6 @@ const schema = yup.object({
 const LoginPage = () => {
   const [submitError, setSubmitError] = useState('')
   const [getUser] = useLazyGetUserQuery()
-  // const dispatch = useDispatch()
   const navigate = useNavigate()
   const { logIn } = useAuth()
 
@@ -52,7 +46,6 @@ const LoginPage = () => {
     }
 
     if (user) {
-      // dispatch(authActions.logIn({ id: user.id, username: user.username }))
       logIn({ id: user.id, username: user.username })
       navigate('/tasks')
     }

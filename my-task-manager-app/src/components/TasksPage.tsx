@@ -1,8 +1,9 @@
 import TodoForm from './Todo/TodoForm'
 import TodoList from './Todo/TodoList'
+
+import useAuth from '../hooks/useAuth'
 import { useGetTasksQuery } from '../api/supabaseApi'
 import styles from '../styles/components/TasksPage.module.scss'
-import useAuth from '../hooks/useAuth'
 
 const TasksPage = () => {
   const { getUserId } = useAuth()

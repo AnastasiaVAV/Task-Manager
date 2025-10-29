@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
-
-import FiltersAside from './FiltersAside'
 import Task from '../../interfaces/Task'
-
 import TodoItem from './TodoItem'
-
+import FiltersAside from './FiltersAside'
 import styles from '../../styles/components/TodoList.module.scss'
 
 interface TodoListProps {
