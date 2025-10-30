@@ -11,14 +11,10 @@ const TasksPage = () => {
 
   const { data, isLoading, error } = useGetTasksQuery({ userId })
   
-  console.log('Tasks data:', data)
-
   return (
-    <div className={styles.TasksPage}>
-      <TodoForm />
-      {!isLoading && !error
-        ? <TodoList todos={data || []} />
-        : (
+    <>
+      {isLoading || error
+        ? (
           <div className={styles.error}>
             <p>
               {isLoading 
@@ -28,9 +24,16 @@ const TasksPage = () => {
             </p>
           </div>
         )
+        : (
+          <div className={styles.TasksPage}>
+            <TodoForm />
+            <TodoList todos={data || []} />
+          </div>
+        )
+
       }
-      
-    </div>
+    </>
+    
   )
 }
 

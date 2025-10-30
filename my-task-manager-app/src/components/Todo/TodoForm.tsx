@@ -35,6 +35,7 @@ const TodoForm = () => {
     reset,
     setFocus,
     watch,
+    setValue,
   } = useForm<TodoFormData>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -44,6 +45,10 @@ const TodoForm = () => {
   })
 
   const selectedPriority = watch('priority')
+
+  const handlePriorityChange = (priority: Priority) => {
+    setValue('priority', priority, { shouldValidate: true })
+  }
 
   useEffect(() => {
     setFocus('text')
@@ -98,10 +103,10 @@ const TodoForm = () => {
               <div className={styles.priorityOption} key={option.value}>
                 <TodoPriorityOption
                   key={option.value}
-                  {...register('priority')}
                   value={option.value}
                   label={option.label}
                   checked={selectedPriority === option.value}
+                  onChange={handlePriorityChange}
                 />
                 <span className={styles.priorityText}>
                   {option.label}

@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ChangeEvent } from 'react'
+import type { InputHTMLAttributes } from 'react'
 import type Priority from '../../../types/Priority'
 import styles from '../../../styles/components/PriorityRadio.module.scss'
 
@@ -7,7 +7,7 @@ interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'on
   value: Priority
   label: string
   checked?: boolean
-  onChange?: ((value: Priority) => void) | ((e: ChangeEvent<HTMLInputElement>) => void)
+  onChange?: (value: Priority) => void
 }
 
 const TodoPriorityOption = ({
@@ -18,13 +18,9 @@ const TodoPriorityOption = ({
   onChange,
   ...rest
 }: Props) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (typeof onChange === 'function') {
-      if (onChange.length === 1 && typeof e.target.value === 'string') {
-        (onChange as (v: Priority) => void)(e.target.value as Priority)
-      } else {
-        (onChange as (e: ChangeEvent<HTMLInputElement>) => void)(e)
-      }
+  const handleChange = () => {
+    if (onChange) {
+      onChange(value)
     }
   }
 

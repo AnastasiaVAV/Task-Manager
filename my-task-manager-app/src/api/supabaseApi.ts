@@ -71,7 +71,7 @@ export const supabaseApi = createApi({
           }])
         return error ? { error } : { data }
       },
-      invalidatesTags: ['Task'],
+      invalidatesTags: (result, error, { id }) => [{ type: 'Task', id }],
     }),
     toggleCompletedTask: build.mutation({
       queryFn: async ({ id, completed }) => {
@@ -82,7 +82,7 @@ export const supabaseApi = createApi({
           .select()
         return error ? { error } : { data }
       },
-      // invalidatesTags: ['Task'],
+      invalidatesTags: (result, error, { id }) => [{ type: 'Task', id }],
     }),
     editTextTask: build.mutation({
       queryFn: async ({ id, text }) => {
@@ -94,7 +94,7 @@ export const supabaseApi = createApi({
           .single()
         return error ? { error } : { data }
       },
-      invalidatesTags: ['Task'],
+      invalidatesTags: (result, error, { id }) => [{ type: 'Task', id }],
     }),
     editPriorityTask: build.mutation({
       queryFn: async ({ id, priority }) => {
@@ -115,7 +115,7 @@ export const supabaseApi = createApi({
           .eq('id', id)
         return error ? { error } : { data: { success: true } }
       },
-      invalidatesTags: ['Task'],
+      invalidatesTags: (result, error, { id }) => [{ type: 'Task', id }],
     }),
   }),
 })
